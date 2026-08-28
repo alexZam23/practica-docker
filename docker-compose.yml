@@ -1,0 +1,54 @@
+services:
+
+  proxy:
+    image: alexZam23/quickbanzer-proxy:1.0
+    build: ./proxy
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - acceso
+      - aplicacion
+
+  frontend:
+    image: alexZam23/quickbanzer-frontend:1.0
+    build: ./frontend
+    networks:
+      - acceso
+
+  backend:
+    image: alexZam23/quickbanzer-backend:1.0
+    build: ./backend
+    environment:
+      DB_HOST: db
+      DB_USER: quickorder_user
+      DB_PASSWORD: quickorder_pass
+      DB_NAME: quickorder_db
+    depends_on:
+      - db
+    networks:
+      - aplicacion
+      - datos
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: quickorder_root
+      MYSQL_DATABASE: quickorder_db
+      MYSQL_USER: quickorder_user
+      MYSQL_PASSWORD: quickorder_pass
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - datos
+
+networks:
+  acceso:
+  aplicacion:
+  datos:
+
+volumes:
+  db_data:

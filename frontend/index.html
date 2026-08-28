@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Andes</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Quick<span>Banzer</span></h1>
+    <p>Catálogo y dashboard de productos</p>
+  </header>
+
+  <main>
+    <section id="dashboard">
+      <h2>Dashboard</h2>
+      <div class="cards" id="cards"></div>
+
+      <div class="lists">
+        <div>
+          <h3>3 productos más económicos</h3>
+          <ol id="top3-economicos"></ol>
+        </div>
+        <div>
+          <h3>5 productos más vendidos</h3>
+          <ol id="top5-vendidos"></ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="catalogo">
+      <h2>Catálogo de productos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th><th>Nombre</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Vendidos</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-productos"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>QuickOrder · Proyecto TEMI Unidad 1</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
