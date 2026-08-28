@@ -1,7 +1,7 @@
 services:
 
   proxy:
-    image: alexZam23/quickbanzer-proxy:1.0
+    image: alexzam23/quickbanzer-proxy:1.0
     build: ./proxy
     ports:
       - "80:80"
@@ -13,13 +13,13 @@ services:
       - aplicacion
 
   frontend:
-    image: alexZam23/quickbanzer-frontend:1.0
+    image: alexzam23/quickbanzer-frontend:1.0
     build: ./frontend
     networks:
       - acceso
 
   backend:
-    image: alexZam23/quickbanzer-backend:1.0
+    image: alexzam23/quickbanzer-backend:1.0
     build: ./backend
     environment:
       DB_HOST: db
